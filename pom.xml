@@ -39,8 +39,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
+        <sonar.projectKey>DavidNavarreICS_SharePortfolioFI</sonar.projectKey>
         <sonar.organization>davidnavarreics</sonar.organization>
-        <sonar.projectKey>XXX</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.java.libraries></sonar.java.libraries>
 
