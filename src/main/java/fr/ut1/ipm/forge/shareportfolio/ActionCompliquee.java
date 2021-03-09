@@ -1,6 +1,20 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 package fr.ut1.ipm.forge.shareportfolio;
 
@@ -19,32 +33,34 @@ public class ActionCompliquee extends Action {
         super(nom);
         this.tblComposition = new HashMap<ActionSimple, Proportion>();
     }
-    
-    
+
     @Override
     public float valeur(Jour j) {
         float total;
-        
+
         total = 0;
-        
-         // parcours des clefs
-        for(ActionSimple act : this.tblComposition.keySet()) {
-            total = total + 
-                    (act.valeur(j) * this.tblComposition.get(act).getPourcentage());
+
+        // parcours des clefs
+        for (ActionSimple act : this.tblComposition.keySet()) {
+            total = total
+                    + (act.valeur(j) * this.tblComposition.get(act).
+                    getPourcentage());
         }
         return total;
     }
-    
+
     public void enrgProportion(ActionSimple as, float pourcentage) {
-        if(this.tblComposition.containsKey(as) == true)
+        if (this.tblComposition.containsKey(as) == true) {
             this.tblComposition.remove(as);
-           
+        }
+
         this.tblComposition.put(as, new Proportion(pourcentage));
     }
-    
+
     public String toString() {
-        return this.getNom() +"=>" + this.tblComposition.toString(); 
+        return this.getNom() + "=>" + this.tblComposition.toString();
     }
+
     private class Proportion {
 
         private float pourcentage;

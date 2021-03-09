@@ -71,6 +71,37 @@ public class ActionTest {
     }
 
     @Test
+    public void testNotEqualsWithDifferentNames() {
+        final String name1 = NAME_CORRECT1;
+        final String name2 = NAME_CORRECT2;
+        final Action action1 = new ActionForTest(name1);
+        final Action action2 = new ActionForTest(name2);
+
+        Assertions.assertFalse(action1.equals(action2),
+                "Should be different");
+        Assertions.assertFalse(action2.equals(action1),
+                "Should be different");
+    }
+
+    @Test
+    public void testNotEqualsToNullObject() {
+        final String name1 = NAME_CORRECT1;
+        final Action action1 = new ActionForTest(name1);
+        final Object action2 = null;
+        Assertions.assertFalse(action1.equals(action2),
+                "Should be different");
+    }
+
+    @Test
+    public void testNotEqualsToOtherObject() {
+        final String name1 = NAME_CORRECT1;
+        final Action action1 = new ActionForTest(name1);
+        final Object action2 = NAME_CORRECT1;
+        Assertions.assertFalse(action1.equals(action2),
+                "Should be different");
+    }
+
+    @Test
     public void testHashcodeExists() {
         final String name = NAME_CORRECT1;
         final Action action = new ActionForTest(name);

@@ -40,29 +40,35 @@ public abstract class Action {
      *
      * @return the value of nom
      */
-    public String getNom() {
+    public final String getNom() {
         return nom;
     }
 
     /**
      * Build one instance of class Action from a name.
      *
-     * @param nom the name of the created action
+     * @param aNom the name of the created action
      */
-    public Action(final String nom) {
-        if (Objects.isNull(nom)) {
+    public Action(final String aNom) {
+        if (Objects.isNull(aNom)) {
             throw new IllegalArgumentException("nom cannot be null");
         }
-        if (nom.isEmpty()) {
+        if (aNom.isEmpty()) {
             throw new IllegalArgumentException("nom cannot be empty");
         }
-        this.nom = nom;
+        this.nom = aNom;
     }
 
-    public abstract float valeur(final Jour j);
+    /**
+     * Provides the value of the action for a given day.
+     *
+     * @param aJour the given day
+     * @return the vaule of the action for this day
+     */
+    public abstract float valeur(final Jour aJour);
 
     @Override
-    public boolean equals(final Object obj) {
+    public final boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -77,7 +83,7 @@ public abstract class Action {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return this.getNom().toUpperCase().hashCode();
     }
 
